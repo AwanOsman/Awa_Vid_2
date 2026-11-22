@@ -174,9 +174,10 @@ export const EndCard: React.FC<{dur: number}> = ({dur}) => {
 	return (
 		<AbsoluteFill style={{backgroundColor: '#000'}}>
 			<AbsoluteFill style={{opacity: inn * fadeOut}}>
-				<AbsoluteFill style={{transform: `scale(${kb})`, transformOrigin: '50% 40%'}}>
-					<Framed clip="Closing" trimBefore={100} zoom={1.0} durationInFrames={dur} push={0} freeze />
-				</AbsoluteFill>
+				<Img
+					src={staticFile('img/IMG_8565.jpg')}
+					style={{width: '100%', height: '100%', objectFit: 'cover', objectPosition: '45% 40%', transform: `scale(${kb})`, transformOrigin: '45% 40%'}}
+				/>
 				<AbsoluteFill style={{background: 'linear-gradient(180deg, rgba(5,8,16,0.2) 0%, rgba(5,8,16,0) 30%, rgba(5,8,16,0.6) 58%, rgba(5,8,16,0.94) 82%)'}} />
 				<div style={{position: 'absolute', left: SAFE.left, width: SAFE.right - SAFE.left, top: 1060}}>
 					<div style={{overflow: 'hidden'}}>
