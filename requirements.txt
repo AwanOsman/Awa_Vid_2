@@ -1,0 +1,4 @@
+faster-whisper>=1.2.1
+yt-dlp>=2026.10.26
+# PyAV 17+ breaks faster-whisper 1.2.x (metadata_errors kwarg)
+av>=11,<17

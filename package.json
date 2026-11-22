@@ -1,0 +1,28 @@
+{
+  "name": "awa_vid_2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AwanOsman/Awa_Vid_2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AwanOsman/Awa_Vid_2/issues"
+  },
+  "homepage": "https://github.com/AwanOsman/Awa_Vid_2#readme",
+  "dependencies": {
+    "@remotion/cli": "^4.0.545",
+    "@remotion/renderer": "^4.0.545",
+    "hyperframes": "^0.9.80",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "remotion": "^4.0.545"
+  }
+}
