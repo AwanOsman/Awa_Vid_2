@@ -91,7 +91,7 @@ export function buildTimeline(): {scenes: Scene[]; total: number} {
 		t += s.dur;
 	};
 	// 1. Cold-open hook
-	push(buildClip('hook', 'Q1', [[0.91, 3.0]], t, undefined, 1));
+	push(buildClip('hook', 'Q1', [[0.91, 3.5]], t, undefined, 1));
 	// 2. Title
 	push({kind: 'title', key: 'title', from: t, dur: f(4.6)});
 	// 3. Introduction

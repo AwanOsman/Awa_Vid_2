@@ -29,7 +29,7 @@ export const Cutaways: React.FC<{scene: ClipScene}> = ({scene}) => {
 				<Sfx at={a} name="shutter" vol={0.4} />
 				<Sfx at={m} name="shutter" vol={0.35} />
 				<Sequence from={a} durationInFrames={m - a} layout="none">
-					<PhotoCutaway src="img/IMG_8565.jpg" dur={m - a} focus={[45, 40]} zoomFrom={1.25} zoomTo={1.1} />
+					<PhotoCutaway src="img/IMG_8566.jpg" dur={m - a} focus={[60, 35]} zoomFrom={1.18} zoomTo={1.04} />
 				</Sequence>
 				<Sequence from={m} durationInFrames={b - m} layout="none">
 					<PhotoCutaway src="img/IMG_8564.jpg" dur={b - m} focus={[40, 50]} zoomFrom={1.05} zoomTo={1.16} />

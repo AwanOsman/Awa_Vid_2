@@ -10,13 +10,15 @@ FIX = {"Dafei": "Tan", "Shen,": "Wei Xuan,", "Thai": "TAR", "Tayo": "TAR", "lect
 # per-clip exact-token edits for captions
 WORD_EDIT = {"Q6": {"friends": "Friends", "at": "at TAR"}, "Q4": {"up": "up."}, "Closing": {"Pahang.": "Pahang,", "All": "all"}}
 # manual trims per clip: [start, end] of the usable take (source seconds)
-TAKE = {"Introduction": [0.0, 11.40], "Q1": [0.0, 11.45], "Q2": [0.0, 10.30], "Q3": [0.45, 14.55],
-        "Q4": [0.0, 12.18], "Q5": [0.0, 8.50], "Q6": [0.78, 6.50], "Closing": [0.0, 3.30]}
+TAKE = {"Introduction": [0.0, 11.62], "Q1": [0.0, 11.62], "Q2": [0.0, 10.40], "Q3": [0.15, 14.75],
+        "Q4": [0.0, 12.25], "Q5": [0.0, 8.72], "Q6": [0.0, 6.72], "Closing": [0.0, 3.40]}
 # pauses that must NOT be cut (source seconds inside the gap) - detector false positives mid-word
 NOCUT = {"Q1": [11.08]}
+START = {"Q6": 0.74}
 # extra explicit cuts (source seconds)
 CUT = {}
-TH_DB, MIN_PAUSE, PAD = -34.0, 0.26, 0.08
+TH_DB, MIN_PAUSE, PAD = -34.0, 0.30, 0.08
+PAD_OUT = 0.15  # keep word tails (soft final syllables) intact
 
 def energy(path, hop=0.01):
     w = wave.open(path); sr = w.getframerate()
@@ -43,12 +45,12 @@ for clip, (a, b) in TAKE.items():
                 elif j >= end:           # trailing silence
                     pass
                 else:
-                    ranges.append([round(cur, 3), round(s0 + PAD, 3)]); cur = s1 - PAD
+                    ranges.append([round(cur, 3), round(s0 + PAD_OUT, 3)]); cur = s1 - PAD
             i = j
         else: i += 1
     # trailing: end at last voiced frame + pad
     voiced = np.where(~silent[int(a/hop):end])[0]
-    last = (int(a/hop) + voiced[-1]) * hop + PAD*1.6 if len(voiced) else b
+    last = (int(a/hop) + voiced[-1]) * hop + 0.2 if len(voiced) else b
     ranges.append([round(cur, 3), round(min(b, last), 3)])
     for c0, c1 in CUT.get(clip, []):
         nr = []
@@ -57,6 +59,7 @@ for clip, (a, b) in TAKE.items():
             if r0 < c0: nr.append([r0, c0])
             if c1 < r1: nr.append([c1, r1])
         ranges = nr
+    if clip in START: ranges[0][0] = max(ranges[0][0], START[clip])
     for t0 in NOCUT.get(clip, []):
         for k in range(len(ranges) - 1):
             if ranges[k][1] <= t0 <= ranges[k + 1][0]:
