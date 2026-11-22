@@ -1,0 +1,7 @@
+node_modules/
+out/
+.DS_Store
+# media (personal footage, regenerated from Google Drive via scripts)
+public/video/
+public/audio/
+public/img/

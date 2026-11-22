@@ -1,0 +1,25 @@
+{
+  "name": "awa-vid-2",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Interview edit: Tan Wei Xuan (Remotion)",
+  "scripts": {
+    "studio": "remotion studio",
+    "preview": "remotion render Interview out/preview.mp4 --scale=0.5 --crf=26",
+    "render": "remotion render Interview out/final.mp4 --crf=16"
+  },
+  "dependencies": {
+    "@fontsource/montserrat": "^5.3.0",
+    "@fontsource/playfair-display": "^5.3.0",
+    "@remotion/cli": "^4.0.545",
+    "@remotion/fonts": "^4.0.545",
+    "@remotion/media-utils": "^4.0.545",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "remotion": "^4.0.545"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.31",
+    "typescript": "^5.9.3"
+  }
+}
